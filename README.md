@@ -1,4 +1,4 @@
-# Microsoft ToDo UWP App Clone
+# Microsoft To-Do UWP App Clone
 MVVM UWP Microsoft To-Do re-implementation 
 
 
