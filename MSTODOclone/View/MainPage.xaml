@@ -37,7 +37,7 @@
                 </Grid.ColumnDefinitions>
 
                 <CheckBox Grid.Column="0" IsEnabled="False"  HorizontalAlignment="Left" Margin="0,0,10,0" Width="Auto" VerticalAlignment="Stretch"  />
-                <TextBox Name="txt_newtodo" Grid.Column="1" Text="{Binding Name, Mode=TwoWay}" PlaceholderText="Add a new item..."  VerticalAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" HorizontalTextAlignment="Left" >
+                <TextBox Name="txt_newtodo" Grid.Column="1"  Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Add a new item..."  VerticalAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" HorizontalTextAlignment="Left" >
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="KeyDown" SourceObject="{Binding ElementName=txt_newtodo}">
                             <core:InvokeCommandAction  Command="{Binding ElementName=btn_newTodo, Path=Command}"  />
@@ -105,6 +105,5 @@
             </ListView.ItemContainerStyle>
 
         </ListView>
-        <Button Content="click me" Command="{Binding stuff}"></Button>
     </Grid>
 </Page>

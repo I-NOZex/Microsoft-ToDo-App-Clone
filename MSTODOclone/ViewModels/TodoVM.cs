@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,9 @@ namespace MSTODOclone.ViewModels {
 
 
     public class EmptyTodoItemVM : TodoVM {
-        public bool IsSaved;
+        public bool IsSaved { get; set; }
+
+        public EmptyTodoItemVM() : base() { 
+        }
     }
 }

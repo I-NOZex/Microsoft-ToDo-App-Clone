@@ -30,6 +30,11 @@ namespace MSTODOclone.ViewModels {
         public NotebookVM() {
             _notebookModel = new NotebookModel();
             ToDos = new ObservableCollection<TodoVM>();
+            ToDos.Add(new EmptyTodoItemVM());
+        }
+
+        public void InsertToDo(TodoVM toDo) {
+            ToDos.Insert(ToDos.IndexOf(ToDos.Last()), toDo);
         }
     }
 }

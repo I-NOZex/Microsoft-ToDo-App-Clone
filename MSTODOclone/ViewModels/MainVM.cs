@@ -33,11 +33,10 @@ namespace MSTODOclone.ViewModels {
         private NotebookVM _activeNotebook;
         public NotebookVM ActiveNotebook {
             get {
-
                 return _activeNotebook;
             }
             set {
-                    _activeNotebook = value;
+                _activeNotebook = value;
                 OnPropertyChanged("ActiveNotebook");
             }
         }
@@ -48,12 +47,6 @@ namespace MSTODOclone.ViewModels {
         public MainVM() {
             Notebooks = InitalCatalog.SetInitialNotebooksData();
             ActiveNotebook = Notebooks.FirstOrDefault();
-            ActiveNotebook.ToDos.Add(
-                new EmptyTodoItemVM() {
-                    IsDone = false,
-                    IsSaved = false
-                }
-            );
 
             AddNewToDo = new RelayCommand(_addNewToDo);
 
@@ -65,11 +58,14 @@ namespace MSTODOclone.ViewModels {
             if (argument is KeyRoutedEventArgs) {
                 KeyRoutedEventArgs keyEvent = argument as KeyRoutedEventArgs;
                 if (keyEvent.Key == VirtualKey.Enter) {
-                    ActiveNotebook.ToDos.Add(new TodoVM() { Name = ActiveNotebook.ToDos.Last().Name });
+                    var lastItem = ActiveNotebook.ToDos.Last();
+                    ActiveNotebook.InsertToDo(new TodoVM() { Name = lastItem.Name });
+                    lastItem.Name = "";
                 }
-            } else if (argument is string) {
-                string newItem = (string)argument;
-                ActiveNotebook.ToDos.Add(new TodoVM() { Name = newItem });
+            } else {
+                var lastItem = ActiveNotebook.ToDos.Last();
+                ActiveNotebook.InsertToDo(new TodoVM() { Name = lastItem.Name });
+                lastItem.Name = "";
             }
 
 

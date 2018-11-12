@@ -14,7 +14,7 @@ namespace MSTODOclone.Data {
             NotebookVM Notebooks1 = new NotebookVM();
             Notebooks1.Name = "List 1";
             foreach (var idx in Enumerable.Range(0, 10)) {
-                Notebooks1.ToDos.Add(
+                Notebooks1.InsertToDo(
                     new TodoVM() {
                         Name = $"Item 1.{idx}",
                         IsDone = r.NextDouble() > 0.5
@@ -26,7 +26,7 @@ namespace MSTODOclone.Data {
             NotebookVM Notebooks2 = new NotebookVM();
             Notebooks2.Name = "List 2";
             foreach (var idx in Enumerable.Range(0, 7)) {
-                Notebooks2.ToDos.Add(
+                Notebooks2.InsertToDo(
                     new TodoVM() {
                         Name = $"Item 2.{idx}",
                         IsDone = r.NextDouble() > 0.5
@@ -38,7 +38,7 @@ namespace MSTODOclone.Data {
             NotebookVM Notebooks3 = new NotebookVM();
             Notebooks3.Name = "List 3";
             foreach (var idx in Enumerable.Range(0, 13)) {
-                Notebooks3.ToDos.Add(
+                Notebooks3.InsertToDo(
                     new TodoVM() {
                         Name = $"Item 3.{idx}",
                         IsDone = r.NextDouble() > 0.5
