@@ -12,40 +12,11 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using databinding.ViewModels;
+using MSTODOclone.Models;
 
-namespace MSTODOclone {
+namespace MSTODOclone.ViewModels {
 
-    public class RelayCommand : ICommand {
-        // Event that fires when the enabled/disabled state of the cmd changes
-        public event EventHandler CanExecuteChanged;
-        // Delegate for method to call when the cmd needs to be executed
-        private readonly Action<object> _targetExecuteMethod;
-        // Delegate for method that determines if cmd is enabled/disabled
-        private readonly Predicate<object> _targetCanExecuteMethod;
-        public bool CanExecute(object parameter) {
-            return _targetCanExecuteMethod == null || _targetCanExecuteMethod(parameter);
-        }
-        public void Execute(object parameter) {
-            // Call the delegate if it's not null
-            if (_targetExecuteMethod != null) _targetExecuteMethod(parameter);
-        }
-        public RelayCommand(Action<object> executeMethod, Predicate<object> canExecuteMethod = null) {
-            _targetExecuteMethod = executeMethod;
-            _targetCanExecuteMethod = canExecuteMethod;
-        }
-        public void RaiseCanExecuteChanged() {
-            if (CanExecuteChanged != null) CanExecuteChanged(this, EventArgs.Empty);
-        }
-    }
-
-    public class BaseVM : INotifyPropertyChanged {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyname) {
-            if (PropertyChanged != null) {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-            }
-        }
-    }
 
     public class TodoCatalog : BaseVM {
 
@@ -77,7 +48,7 @@ namespace MSTODOclone {
 
     }
 
-    public class TodoListViewModel : BaseVM {
+    public class MainVM : BaseVM {
 
         public RelayCommand ActivateItem {
             get;
@@ -117,7 +88,7 @@ namespace MSTODOclone {
         }
 
 
-        public TodoListViewModel() {
+        public MainVM() {
             TodoCatalog todos = new TodoCatalog();
 
             TodoItem t1 = new TodoItem();

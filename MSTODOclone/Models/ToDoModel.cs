@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSTODOclone {
+namespace MSTODOclone.Models {
 
-    public class TodoItem {
+    public class ToDoModel {
 
         private string _name;
         private bool _isDone;
@@ -25,13 +25,13 @@ namespace MSTODOclone {
             get; set;
         }
 
-        public TodoItem() {
+        public ToDoModel() {
 
         }
 
     }
 
-    public class EmptyTodoItem : TodoItem {
+    public class EmptyTodoItem : ToDoModel {
         public bool IsSaved;
     }
 
