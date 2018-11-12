@@ -95,14 +95,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\InitalCatalog.cs" />
     <Compile Include="Helpers\ToDoItemTemplateSelector.cs" />
-    <Compile Include="Model\NotebookModel.cs" />
+    <Compile Include="Models\NotebookModel.cs" />
+    <Compile Include="ViewModels\BaseVM.cs" />
+    <Compile Include="ViewModels\NotebookVM.cs" />
+    <Compile Include="ViewModels\TodoVM.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\ToDoModel.cs" />
-    <Compile Include="VM\TodoListVM.cs" />
+    <Compile Include="Models\ToDoModel.cs" />
+    <Compile Include="ViewModels\MainVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

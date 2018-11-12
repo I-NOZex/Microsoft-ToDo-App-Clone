@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSTODOclone {
+namespace MSTODOclone.Models {
 
-    public class TodoItem {
+    public class ToDoModel {
 
         private string _name;
         private bool _isDone;
@@ -18,22 +19,19 @@ namespace MSTODOclone {
             get => _name;
             set {
                 _name = value;
+                Debug.WriteLine("ToDo model name changed to -> "+value);
             }
         }
 
         public bool IsDone {
-            get; set;
+            get => _isDone;
+            set => _isDone = value;
         }
 
-        public TodoItem() {
+        public ToDoModel() {
 
         }
 
     }
-
-    public class EmptyTodoItem : TodoItem {
-        public bool IsSaved;
-    }
-
 
 }

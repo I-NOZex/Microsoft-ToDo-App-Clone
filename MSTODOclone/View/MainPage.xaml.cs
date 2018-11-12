@@ -23,8 +23,6 @@ namespace MSTODOclone
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public TodoListViewModel ViewModel;
-
         public MainPage()
         {
             this.InitializeComponent();
