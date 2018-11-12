@@ -22,7 +22,8 @@ namespace MSTODOclone.Models {
         }
 
         public bool IsDone {
-            get; set;
+            get => _isDone;
+            set => _isDone = value;
         }
 
         public ToDoModel() {
@@ -30,10 +31,5 @@ namespace MSTODOclone.Models {
         }
 
     }
-
-    public class EmptyTodoItem : ToDoModel {
-        public bool IsSaved;
-    }
-
 
 }

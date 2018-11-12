@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:helpers="using:MSTODOclone.Helpers"
+    xmlns:viewmodel="using:MSTODOclone.ViewModels"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -63,14 +64,14 @@
         </Grid.ColumnDefinitions>
 
         <Grid.DataContext>
-            <local:TodoListViewModel></local:TodoListViewModel>
+            <viewmodel:MainVM></viewmodel:MainVM>
         </Grid.DataContext>
 
         <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
 
             <NavigationViewList 
-                SelectedItem="{Binding ActiveItem, Mode=TwoWay}"
-                ItemsSource="{Binding ToDos, Mode=TwoWay}" 
+                SelectedItem="{Binding ActiveNotebook, Mode=TwoWay}"
+                ItemsSource="{Binding Notebooks, Mode=TwoWay}" 
                 Name="TodoCategories" 
                 Margin="0,0,0,0" 
                 HorizontalAlignment="Stretch" 
@@ -91,7 +92,7 @@
         </Grid>
 
         <ListView 
-            ItemsSource="{Binding ActiveItem.Items, Mode=TwoWay}" 
+            ItemsSource="{Binding ActiveNotebook.ToDos, Mode=TwoWay}" 
             Grid.Column="1" 
             HorizontalAlignment="Stretch" 
             Margin="0,0,0,0" 
@@ -104,10 +105,6 @@
             </ListView.ItemContainerStyle>
 
         </ListView>
-        <Button Content="click me" Command="{Binding stuff}">
-            <Button.DataContext>
-                <local:TodoListViewModel></local:TodoListViewModel>
-            </Button.DataContext>
-        </Button>
+        <Button Content="click me" Command="{Binding stuff}"></Button>
     </Grid>
 </Page>

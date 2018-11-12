@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\InitalCatalog.cs" />
     <Compile Include="Helpers\ToDoItemTemplateSelector.cs" />
     <Compile Include="Models\NotebookModel.cs" />
     <Compile Include="ViewModels\BaseVM.cs" />
