@@ -14,13 +14,14 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using databinding.ViewModels;
 using MSTODOclone.Data;
+using MSTODOclone.Helpers;
 using MSTODOclone.Models;
 
 namespace MSTODOclone.ViewModels {
 
 
     public class MainVM : BaseVM {
-        private ObservableCollection<NotebookVM> _notebooks = new ObservableCollection<NotebookVM>();
+        private ObservableCollection<NotebookVM> _notebooks { get; set; }
         public ObservableCollection<NotebookVM> Notebooks {
             get => _notebooks;
             set {
@@ -32,9 +33,7 @@ namespace MSTODOclone.ViewModels {
 
         private NotebookVM _activeNotebook;
         public NotebookVM ActiveNotebook {
-            get {
-                return _activeNotebook;
-            }
+            get { return _activeNotebook; }
             set {
                 _activeNotebook = value;
                 OnPropertyChanged("ActiveNotebook");
@@ -42,15 +41,37 @@ namespace MSTODOclone.ViewModels {
         }
 
         public RelayCommand AddNewToDo { get; set; }
+        public RelayCommand SaveAll { get; set; }
 
+        private bool _isLoading { get; set; }
+        public bool IsLoading {
+            get => _isLoading;
+            set {
+                _isLoading = value;
+                OnPropertyChanged("IsLoading");
+            }
+        }
 
         public MainVM() {
-            Notebooks = InitalCatalog.SetInitialNotebooksData();
-            ActiveNotebook = Notebooks.FirstOrDefault();
+            LoadData();
 
             AddNewToDo = new RelayCommand(_addNewToDo);
-
+            SaveAll = new RelayCommand(o => _saveAll(o));
         }
+
+        private async Task LoadData() {
+            IsLoading = true;
+            Notebooks = await NotebookService.FetchDataAsync();
+
+            ActiveNotebook = Notebooks?.FirstOrDefault();
+
+            foreach (var notebook in Notebooks) {
+                notebook.ToDos.Add(new EmptyTodoItemVM());
+            }
+
+            IsLoading = false;
+        }
+
 
         private void _addNewToDo(object argument) {
             if (argument == null) return;
@@ -59,16 +80,26 @@ namespace MSTODOclone.ViewModels {
                 KeyRoutedEventArgs keyEvent = argument as KeyRoutedEventArgs;
                 if (keyEvent.Key == VirtualKey.Enter) {
                     var lastItem = ActiveNotebook.ToDos.Last();
-                    ActiveNotebook.InsertToDo(new TodoVM() { Name = lastItem.Name });
+                    ActiveNotebook.InsertToDo(new TodoVM() {Name = lastItem.Name});
                     lastItem.Name = "";
                 }
-            } else {
+            }
+            else {
                 var lastItem = ActiveNotebook.ToDos.Last();
-                ActiveNotebook.InsertToDo(new TodoVM() { Name = lastItem.Name });
+                ActiveNotebook.InsertToDo(new TodoVM() {Name = lastItem.Name});
                 lastItem.Name = "";
             }
 
 
+        }
+
+        private async Task _saveAll(object argument) {
+            IsLoading = true;
+            await NotebookService.SaveDataASync(Notebooks);
+            IsLoading = false;
+            foreach (var notebook in Notebooks) {
+                notebook.ToDos.Add(new EmptyTodoItemVM());
+            }
         }
     }
 

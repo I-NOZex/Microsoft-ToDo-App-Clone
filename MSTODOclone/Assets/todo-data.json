@@ -1,0 +1,55 @@
+﻿[
+  {
+    "Name": "list 1",
+    "ToDos": [
+      {
+        "Name": "item 1",
+        "IsDone": true
+      },
+      {
+        "Name": "item 2",
+        "IsDone": true
+      },
+      {
+        "Name": "item 3",
+        "IsDone": true
+      }
+    ]
+  },
+
+  {
+    "Name": "list 2",
+    "ToDos": [
+      {
+        "Name": "item a",
+        "IsDone": true
+      },
+      {
+        "Name": "item b",
+        "IsDone": true
+      },
+      {
+        "Name": "item c",
+        "IsDone": true
+      }
+    ]
+  },
+
+  {
+    "Name": "list 3",
+    "ToDos": [
+      {
+        "Name": "item I",
+        "IsDone": true
+      },
+      {
+        "Name": "item II",
+        "IsDone": true
+      },
+      {
+        "Name": "item III",
+        "IsDone": true
+      }
+    ]
+  }
+]

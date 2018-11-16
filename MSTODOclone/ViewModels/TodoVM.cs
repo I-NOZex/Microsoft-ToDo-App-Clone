@@ -33,11 +33,14 @@ namespace MSTODOclone.ViewModels {
 
     }
 
-
     public class EmptyTodoItemVM : TodoVM {
         public bool IsSaved { get; set; }
 
         public EmptyTodoItemVM() : base() { 
         }
+
+        public bool ShouldSerializeIsSaved() => false;
+        public bool ShouldSerializeName() => false;
+        public bool ShouldSerializeIsDone() => false;
     }
 }

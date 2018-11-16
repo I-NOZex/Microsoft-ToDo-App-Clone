@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MSTODOclone.Models {
-    class NotebookModel {
+    public class NotebookModel {
         private string _name;
         public string Name {
             get => _name;
@@ -21,6 +21,10 @@ namespace MSTODOclone.Models {
             set {
                 _toDos = value;
             }
+        }
+
+        public NotebookModel() {
+
         }
     }
 }
