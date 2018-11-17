@@ -11,4 +11,4 @@ Ao is an unofficial, open source, third-party, community-driven, free app and is
 
 ## License
 
-[MIT](https://github.com/I-NOZex/Microsoft-ToDo-App-Clone/blob/master/license.md)
+[MIT](https://github.com/I-NOZex/Microsoft-ToDo-App-Clone/blob/master/LICENSE)
