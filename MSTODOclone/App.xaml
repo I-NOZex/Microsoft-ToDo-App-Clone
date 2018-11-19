@@ -7,6 +7,8 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:helpers="using:MSTODOclone.Helpers"
     xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters">
+
+
     <Application.Resources>
         <!--======== BEGIN Brushes =========================================-->
         <SolidColorBrush x:Key="HyperlinkBlue"
@@ -17,6 +19,10 @@
 
         <SolidColorBrush x:Key="BackgroundBgGray"
                          Color="#242426"></SolidColorBrush>
+
+        <SolidColorBrush x:Key="IconBlue"
+                         Color="#1162C5"></SolidColorBrush>
+       
 
         <!--======== END Brushes ===========================================-->
 
@@ -70,7 +76,6 @@
                            />
 
                 <CheckBox Grid.Column="2"
-                          IsChecked="{Binding IsDone, Mode=TwoWay}"
                           HorizontalAlignment="Left"
                           Margin="10,0,0,0"
                           Width="Auto"

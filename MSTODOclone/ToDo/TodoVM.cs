@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using databinding.ViewModels;
+﻿using databinding.ViewModels;
 using MSTODOclone.Models;
 
 namespace MSTODOclone.ViewModels {
@@ -33,14 +27,7 @@ namespace MSTODOclone.ViewModels {
 
     }
 
-    public class EmptyTodoItemVM : TodoVM {
+    public class EmptyToDoVM : TodoVM {
         public bool IsSaved { get; set; }
-
-        public EmptyTodoItemVM() : base() { 
-        }
-
-        public bool ShouldSerializeIsSaved() => false;
-        public bool ShouldSerializeName() => false;
-        public bool ShouldSerializeIsDone() => false;
     }
 }

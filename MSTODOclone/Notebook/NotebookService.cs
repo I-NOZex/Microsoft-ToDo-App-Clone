@@ -27,7 +27,7 @@ namespace MSTODOclone.Data
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization) {
                 JsonProperty prop = base.CreateProperty(member, memberSerialization);
 
-                if (prop.DeclaringType == typeof(EmptyTodoItemVM)) {
+                if (prop.DeclaringType == typeof(EmptyToDoVM)) {
                     prop.ShouldSerialize = obj => false;
                 }
 

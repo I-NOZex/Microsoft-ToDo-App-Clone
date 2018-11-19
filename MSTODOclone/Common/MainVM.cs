@@ -66,7 +66,7 @@ namespace MSTODOclone.ViewModels {
             ActiveNotebook = Notebooks?.FirstOrDefault();
 
             foreach (var notebook in Notebooks) {
-                notebook.ToDos.Add(new EmptyTodoItemVM());
+                notebook.ToDos.Add(new EmptyToDoVM());
             }
 
             IsLoading = false;
@@ -98,7 +98,7 @@ namespace MSTODOclone.ViewModels {
             await NotebookService.SaveDataASync(Notebooks);
             IsLoading = false;
             foreach (var notebook in Notebooks) {
-                notebook.ToDos.Add(new EmptyTodoItemVM());
+                notebook.ToDos.Add(new EmptyToDoVM());
             }
         }
     }
