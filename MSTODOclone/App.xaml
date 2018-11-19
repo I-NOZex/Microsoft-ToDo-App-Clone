@@ -22,7 +22,10 @@
 
         <SolidColorBrush x:Key="IconBlue"
                          Color="#1162C5"></SolidColorBrush>
-       
+
+        <SolidColorBrush x:Key="BorderGray"
+                         Color="#3C3C42"></SolidColorBrush>
+
 
         <!--======== END Brushes ===========================================-->
 

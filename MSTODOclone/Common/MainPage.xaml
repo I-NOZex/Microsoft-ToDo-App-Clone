@@ -28,7 +28,9 @@
         <Grid HorizontalAlignment="Stretch"
               Margin="0,0,0,0"
               Grid.Column="0"
-              VerticalAlignment="Stretch">
+              VerticalAlignment="Stretch"
+              BorderBrush="{StaticResource BorderGray}"
+              BorderThickness="0,0,1,0">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -78,6 +80,7 @@
                     Content="Save all"
                     HorizontalAlignment="Stretch"
                     Margin="0,0,0,0"
+                    Visibility="Collapsed"
                     VerticalAlignment="Bottom" />
         </Grid>
 

@@ -82,12 +82,14 @@ namespace MSTODOclone.ViewModels {
                     var lastItem = ActiveNotebook.ToDos.Last();
                     ActiveNotebook.InsertToDo(new TodoVM() {Name = lastItem.Name});
                     lastItem.Name = "";
+                    SaveAll.Execute(null);
                 }
             }
             else {
                 var lastItem = ActiveNotebook.ToDos.Last();
                 ActiveNotebook.InsertToDo(new TodoVM() {Name = lastItem.Name});
                 lastItem.Name = "";
+                SaveAll.Execute(null);
             }
 
 
