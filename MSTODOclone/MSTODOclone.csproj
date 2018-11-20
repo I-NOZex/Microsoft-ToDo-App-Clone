@@ -95,6 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PubSub.cs" />
+    <Compile Include="Helpers\StoreState.cs" />
     <Compile Include="Notebook\NotebookService.cs" />
     <Compile Include="Helpers\Bool2TextDecorationConverter.cs" />
     <Compile Include="Helpers\Bool2VisibilityConverter.cs" />

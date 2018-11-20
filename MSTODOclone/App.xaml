@@ -10,6 +10,7 @@
 
 
     <Application.Resources>
+
         <!--======== BEGIN Brushes =========================================-->
         <SolidColorBrush x:Key="HyperlinkBlue"
                          Color="#6C80FC"></SolidColorBrush>
@@ -43,6 +44,7 @@
 
 
         <!--======== BEGIN ToDoItemTemplateSelector ========================-->
+
         <DataTemplate x:Key="GeneralToDoItemTemplate">
             <Grid Margin="0,0,0,0"
                   VerticalAlignment="Stretch"
@@ -68,6 +70,7 @@
                           FontFamily="Segoe UI" />
 
                 <TextBlock Grid.Column="1"
+                           Name="txt_todo"
                            Text="{Binding Name, Mode=TwoWay}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"

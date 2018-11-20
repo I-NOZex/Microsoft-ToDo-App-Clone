@@ -36,6 +36,7 @@ namespace MSTODOclone.ViewModels {
             get { return _activeNotebook; }
             set {
                 _activeNotebook = value;
+                _activeNotebook.SaveMethod = SaveAll;
                 OnPropertyChanged("ActiveNotebook");
             }
         }
@@ -53,10 +54,10 @@ namespace MSTODOclone.ViewModels {
         }
 
         public MainVM() {
-            LoadData();
-
             AddNewToDo = new RelayCommand(_addNewToDo);
-            SaveAll = new RelayCommand(o => _saveAll(o));
+            SaveAll = new RelayCommand((o) => _saveAll(o));
+
+            LoadData();
         }
 
         private async Task LoadData() {

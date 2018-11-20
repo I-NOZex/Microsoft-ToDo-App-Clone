@@ -11,13 +11,20 @@
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:interop="using:Windows.UI.Xaml.Interop"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-      Background="{StaticResource BackgroundBgGray}">
+      xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+      Background="{StaticResource BackgroundBgGray}"
+      MinWidth="640">
+    
+    <Page.Resources>
+        <converters:DoubleToVisibilityConverter x:Key="ConditionalVisibility"
+                                                GreaterThan="0" />
+    </Page.Resources>
 
     <Grid Name="MainGrid">
 
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="280" />
             <ColumnDefinition Width="80*" />
         </Grid.ColumnDefinitions>
 
@@ -25,18 +32,12 @@
             <viewmodel:MainVM></viewmodel:MainVM>
         </Grid.DataContext>
 
-        <Grid HorizontalAlignment="Stretch"
-              Margin="0,0,0,0"
-              Grid.Column="0"
-              VerticalAlignment="Stretch"
-              BorderBrush="{StaticResource BorderGray}"
-              BorderThickness="0,0,1,0">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-
-
+        <StackPanel HorizontalAlignment="Stretch"
+                    Margin="0,0,0,0"
+                    Grid.Column="0"
+                    VerticalAlignment="Stretch"
+                    BorderBrush="{StaticResource BorderGray}"
+                    BorderThickness="0,0,1,0">
 
             <TextBlock x:Name="txt_appTitle"
                        Text="I-NOZex To-Do"
@@ -52,8 +53,9 @@
             <NavigationViewList SelectedItem="{Binding ActiveNotebook, Mode=TwoWay}"
                                 ItemsSource="{Binding Notebooks, Mode=TwoWay}"
                                 x:Name="TodoCategories"
-                                Margin="0,32,0,0"
-                                IsItemClickEnabled="True">
+                                Margin="0,0,0,0"
+                                IsItemClickEnabled="True"
+                                HorizontalContentAlignment="Stretch">
                 <NavigationViewList.Header>
                     <TextBox Margin="0,0,0,0"
                              VerticalAlignment="Center"
@@ -67,12 +69,49 @@
 
                 <NavigationViewList.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xE8FD;" Foreground="{StaticResource IconBlue}"></FontIcon>
-                            <TextBlock Margin="10,0,0,0" Text="{Binding Name, Mode=TwoWay}" />
-                        </StackPanel>
+                        <!--<StackPanel HorizontalAlignment="Stretch"
+                                    Orientation="Horizontal"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto">
+    <FontIcon Glyph="&#xE8FD;"
+              Grid.Column="0"
+              Foreground="{StaticResource IconBlue}"
+              HorizontalAlignment="Left"></FontIcon>
+    <TextBlock Margin="10,0,0,0"
+               Grid.Column="1"
+               Text="{Binding Name, Mode=TwoWay}" />
+    <TextBlock Text="{Binding ToDos.Count}"
+               Grid.Column="2"
+               HorizontalAlignment="Right"></TextBlock>
+                        </StackPanel>-->
+
+                        <Grid HorizontalAlignment="Stretch"
+                              >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="30" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE8FD;"
+                                      Grid.Column="0"
+                                      Foreground="{StaticResource IconBlue}"
+                                      HorizontalAlignment="Left"></FontIcon>
+                            <TextBlock Margin="0,0,0,0"
+                                       Grid.Column="1"
+                                       Width="185"
+                                       Text="{Binding Name, Mode=TwoWay}"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Stretch" />
+                            <TextBlock Text="{Binding TotalToDo}"
+                                       Grid.Column="2"
+                                       Visibility="{Binding TotalToDo, Converter={StaticResource ConditionalVisibility}}"
+                                       FontSize="12"
+                                       Opacity="0.6"
+                                       HorizontalAlignment="Right"></TextBlock>
+                        </Grid>
+
                     </DataTemplate>
                 </NavigationViewList.ItemTemplate>
+
 
             </NavigationViewList>
             <Button x:Name="btn_saveAll"
@@ -82,7 +121,9 @@
                     Margin="0,0,0,0"
                     Visibility="Collapsed"
                     VerticalAlignment="Bottom" />
-        </Grid>
+
+
+        </StackPanel>
 
 
         <Grid Grid.Column="1">
@@ -103,7 +144,7 @@
                    FocusVisualSecondaryBrush="{x:Null}"
                    Source="/Assets/2560x1600.jpg" />
 
-            <TextBlock Grid.Row="0" 
+            <TextBlock Grid.Row="0"
                        Name="txt_notebookName"
                        Text="{Binding ActiveNotebook.Name}"
                        VerticalAlignment="Bottom"
@@ -111,7 +152,7 @@
                        FontWeight="Medium"
                        FontFamily="Segoe UI Semibold"
                        Margin="0,0,0,0"
-                       Padding="12,0,0,12"/>
+                       Padding="12,0,0,12" />
 
             <ListView ItemContainerStyleSelector="{StaticResource ListViewItemTemplateSelector}"
                       ItemsSource="{Binding ActiveNotebook.ToDos, Mode=TwoWay}"
