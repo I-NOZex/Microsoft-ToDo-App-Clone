@@ -50,7 +50,7 @@
                        FontFamily="{StaticResource ContentControlThemeFontFamily}"
                        Padding="12,8,0,8" />
 
-            <NavigationViewList SelectedItem="{Binding ActiveNotebook, Mode=TwoWay}"
+            <NavigationViewList ItemContainerStyle="{StaticResource NavigationViewItemRevealStyle}" SelectedItem="{Binding ActiveNotebook, Mode=TwoWay}"
                                 ItemsSource="{Binding Notebooks, Mode=TwoWay}"
                                 x:Name="TodoCategories"
                                 Margin="0,0,0,0"
@@ -67,22 +67,9 @@
 
                 </NavigationViewList.Header>
 
+
                 <NavigationViewList.ItemTemplate>
                     <DataTemplate>
-                        <!--<StackPanel HorizontalAlignment="Stretch"
-                                    Orientation="Horizontal"
-                                    ScrollViewer.HorizontalScrollBarVisibility="Auto">
-    <FontIcon Glyph="&#xE8FD;"
-              Grid.Column="0"
-              Foreground="{StaticResource IconBlue}"
-              HorizontalAlignment="Left"></FontIcon>
-    <TextBlock Margin="10,0,0,0"
-               Grid.Column="1"
-               Text="{Binding Name, Mode=TwoWay}" />
-    <TextBlock Text="{Binding ToDos.Count}"
-               Grid.Column="2"
-               HorizontalAlignment="Right"></TextBlock>
-                        </StackPanel>-->
 
                         <Grid HorizontalAlignment="Stretch"
                               >
