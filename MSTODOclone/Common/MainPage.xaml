@@ -14,7 +14,7 @@
       xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
       Background="{StaticResource BackgroundBgGray}"
       MinWidth="640">
-    
+
     <Page.Resources>
         <converters:DoubleToVisibilityConverter x:Key="ConditionalVisibility"
                                                 GreaterThan="0" />
@@ -50,7 +50,8 @@
                        FontFamily="{StaticResource ContentControlThemeFontFamily}"
                        Padding="12,8,0,8" />
 
-            <NavigationViewList ItemContainerStyle="{StaticResource NavigationViewItemRevealStyle}" SelectedItem="{Binding ActiveNotebook, Mode=TwoWay}"
+            <NavigationViewList ItemContainerStyle="{StaticResource NavigationViewItemRevealStyle}"
+                                SelectedItem="{Binding ActiveNotebook, Mode=TwoWay}"
                                 ItemsSource="{Binding Notebooks, Mode=TwoWay}"
                                 x:Name="TodoCategories"
                                 Margin="0,0,0,0"
@@ -71,8 +72,26 @@
                 <NavigationViewList.ItemTemplate>
                     <DataTemplate>
 
-                        <Grid HorizontalAlignment="Stretch"
-                              >
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Rename"
+                                                    Icon="Edit" />
+                                    
+                                    <MenuFlyoutItem Text="Share"
+                                                    Icon="Share" />
+                                    
+                                    <MenuFlyoutItem Text="Duplicate"
+                                                    Icon="Copy" />
+                                    
+                                    <MenuFlyoutSeparator />
+                                    
+                                    <MenuFlyoutItem Foreground="{StaticResource DangerRed}"
+                                                    Text="Delete"
+                                                    Icon="Delete"
+                                                    Style="{StaticResource dangerMenuFlyoutItem}"/>
+                                </MenuFlyout>
+                            </Grid.ContextFlyout>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="1*" />
